@@ -86,20 +86,20 @@ class MyPhysicsGame extends Forge2DGame {
       await Future<void>.delayed(const Duration(milliseconds: 500));
     }
   }
-}
 
-Future<void> addPlayer() async => world.add(
-      Player(
-        Vector2(camera.visibleWorldRect.left * 2 / 3, 0),
-        aliens.getSprite(PlayerColor.randomColor.fileName),
-      ),
-    );
+  Future<void> addPlayer() async => world.add(
+        Player(
+          Vector2(camera.visibleWorldRect.left * 2 / 3, 0),
+          aliens.getSprite(PlayerColor.randomColor.fileName),
+        ),
+      );
 
-@override
-update(dt) {
-  super.update(dt);
-  if (isMounted && world.children.whereType<Player>().isEmpty) {
-    addPlayer();
+  @override
+  update(dt) {
+    super.update(dt);
+    if (isMounted && world.children.whereType<Player>().isEmpty) {
+      addPlayer();
+    }
   }
 }
 
